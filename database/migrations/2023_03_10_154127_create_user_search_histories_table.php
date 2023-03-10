@@ -6,25 +6,20 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
     public function up()
     {
         Schema::create('user_search_histories', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            $table->unsignedBigInteger('user_id');
             $table->string('search_keyword');
-            $table->text('search_results');
+            $table->text('search_results')->nullable();
             $table->timestamp('search_time')->useCurrent();
-            $table->timestamps();
+
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
-    public function down(): void
+    public function down()
     {
         Schema::dropIfExists('user_search_histories');
     }
