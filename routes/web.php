@@ -13,6 +13,5 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/search-history', 'SearchHistoryController@index')->name('search-history.index');
+Route::get('/search-history/{searchHistory}', 'SearchHistoryController@show')->name('search-history.show');
