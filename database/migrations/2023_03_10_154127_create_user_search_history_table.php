@@ -14,7 +14,7 @@ class CreateUserSearchHistoryTable extends Migration
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
             $table->dateTime('search_time');
-            $table->text('search_results');
+            $table->json('search_results')->nullable();
             $table->timestamps();
         });
     }

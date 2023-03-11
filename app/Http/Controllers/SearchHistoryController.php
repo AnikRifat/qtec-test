@@ -57,8 +57,10 @@ class SearchHistoryController extends Controller
     public function show(UserSearchHistory $searchHistory)
     {
         // Display a single search history item
-        return view('search-history.show', [
+        return view('search-history', [
             'searchHistory' => $searchHistory
         ]);
     }
+
+    
 }
